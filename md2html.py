@@ -19,38 +19,17 @@ parse_src.set_defaults(readfile=False)
 args = parser.parse_args()
 # print(args)
 
-# Old manual arg processing
-# if len(sys.argv) != 2:
-#     sys.exit("Specify a markdown file to convert")
-
-# file_md = args.readfile
-# if not os.path.isfile(file_md):
-#     sys.exit("File doesn't exist:\n" + file_md)
-
-
-def md2html(content):
-    prefix = 'markdown.extensions.'
-    ext = ['tables', 'fenced_code', 'nl2br', 'toc']
-    content_html = markdown.markdown(content_md, extensions=[prefix + e for e in ext])
-    return ""
-
-
 # Read
 
 content_md = ""
 
 if args.readfile:
-    # content_md = args.readfile.read()
     file_md = args.readfile
     if not os.path.isfile(file_md):
         sys.exit("File doesn't exist:\n" + file_md)
     with open(file_md, 'r') as file:
         content_md = file.read()
 else:
-    # Supposedly:
-    # for line in sys.stdin:
-    #     content_md += line
-    # Seems to work:
     content_md = sys.stdin.read()
 
 # Process content
@@ -72,5 +51,6 @@ if args.readfile:
         file.write(content_html)
     # args.readfile.close()
 else:
-    sys.stdout.write(content_html)
+    # Doesn't seem to work for xclip
+    sys.stdout.writelines(content_html)
     sys.stdout.flush()
