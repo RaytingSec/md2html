@@ -1,0 +1,163 @@
+/* Font CDN */
+@import url('https://cdn.jsdelivr.net/font-hack/2.020/css/hack.min.css');
+/*@import url('https://fonts.googleapis.com/css?family=Open+Sans');*/
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/* Page formatting */
+
+html {
+    background-color: #15181c;
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+
+    min-width: 480px;
+    width: 800px;
+    max-width: 75%;
+
+    margin: auto; /* Center alignment */
+    padding-left: 5%; /* Provide padding when being compressed */
+    padding-right: 5%;
+}
+
+/* Headings and titles */
+
+.title {
+    font-family: 'Hack';
+    padding-left: 0px;
+
+    border-width: 0;
+    border-bottom-width: 2px;
+}
+
+h1, h2, h3, h4 {
+    font-weight: normal;
+
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+
+    border-width: 0;
+}
+
+h1 {
+    font-size: 2.0em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.25em;
+}
+
+h4 {
+    font-size: 1.0em;
+}
+
+/* Markdown Formatting */
+h1:not(.title)::before {
+    content: '# ';
+    color: #00AAFF;
+}
+
+h2::before {
+    content: '## ';
+    color: #00AAFF;
+}
+
+h3::before {
+    content: '### ';
+    color: #00AAFF;
+}
+
+h4::before {
+    content: '#### ';
+    color: #00AAFF;
+}
+
+nav {
+    text-align: center;
+    font-size: x-large;
+
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+    margin-bottom: 2em;
+}
+
+/* Page contents */
+
+p {
+    line-height: 1.5;
+    margin-bottom: 1.5em;
+}
+
+/* inline code */
+code {
+    font-family: 'Hack';
+    background: #1e2227;
+    font-size: small;
+}
+
+pre {
+    font-family: 'Hack';
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+footer {
+    font-size: small;
+    text-align: right;
+
+    margin-top: 5em;
+    margin-bottom: 1em;
+    padding-top: 20px;
+    padding-left: 25%;
+}
+
+a:link {
+    color: #00EEFF;
+}
+
+a:visited {
+    color: #00AAFF;
+}
+
+.terminal {
+    font-family: 'Hack';
+    text-align: left;
+    width: 200px;
+    height: 120px;
+    padding: 20px 40px 20px 40px;
+    border-radius: 5px;
+    background-color: black;
+}
+
+blockquote {
+    font-style: italic;
+}
+
+p img {
+    display: block;
+    max-width: 80%;
+    margin: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+/* Borders */
+
+h1, h2, h3, h4, .title, hr, footer {
+    border-style: solid;
+    border-color: #00AAFF;
+}
+
+hr, footer {
+    border-width: 0;
+    border-top-width: 2px;
+}
