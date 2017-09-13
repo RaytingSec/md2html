@@ -10,13 +10,29 @@ import argparse
 
 # Argparse
 
-parser = argparse.ArgumentParser(description='Convert mardown to html, supports tables, codeblocks, linebreaks, table of contents')
+parser = argparse.ArgumentParser(description="Convert mardown to html. Supports tables, codeblocks, linebreaks, table of contents.")
 
-parser.add_argument('-s', '--stylized', dest='stylized', action='store_true', help='prepend a default css dark theme to the html')
-parse_src = parser.add_mutually_exclusive_group()
-parse_src.add_argument('--stdin', dest='readfile', action='store_false', help='(default) read markdown from stdin and output html to stdout, useful for piping')
-parse_src.add_argument('-f', '--file', dest='readfile', action='store', help='read from file and convert it to html file with same name')
-parse_src.set_defaults(readfile=False)
+parser.add_argument('-s', '--stylized',
+                    action='store_true',
+                    help='Prepend a default css dark theme to the html')
+
+md_in = parser.add_mutually_exclusive_group()
+md_in.add_argument('--stdin',
+                   action='store_false',
+                   default=False,
+                   help='read markdown from stdin and output html to stdout, useful for piping')
+md_in.add_argument('-f', '--infile',
+                   help='(default) read from file and convert it to html file with same name')
+
+html_out = parser.add_mutually_exclusive_group()
+html_out.add_argument('--stdout',
+                      action='store_true',
+                      default=False,
+                      help='output html to stdout')
+html_out.add_argument('-o', '--outfile',
+                      action='store_true',
+                      help='(default) write html to file. Takes the file name and appends .html extension. Caution, will overwrite existing file.')
+
 args = parser.parse_args()
 # print(args)
 
@@ -24,14 +40,16 @@ args = parser.parse_args()
 
 content_md = ""
 
-if args.readfile:
-    file_md = args.readfile
+if args.stdin:
+    content_md = sys.stdin.read()
+elif args.infile is not None:
+    file_md = args.infile
     if not os.path.isfile(file_md):
-        sys.exit("File doesn't exist:\n" + file_md)
+        sys.exit("File doesn't exist: " + file_md)
     with open(file_md) as file:
         content_md = file.read()
 else:
-    content_md = sys.stdin.read()
+    sys.exit('No markdown file specified')
 
 # Process content
 
@@ -52,12 +70,12 @@ if args.stylized:
 
 # Write
 
-if args.readfile:
-    file_html = os.path.splitext(file_md)[0] + '.html'
-    with open(file_html, 'w') as file:
-        file.write(content_html)
-    # args.readfile.close()
-else:
+if args.stdout:
     # Doesn't seem to work for xclip
     sys.stdout.writelines(content_html)
     sys.stdout.flush()
+else:
+    file_html = os.path.splitext(file_md)[0] + '.html'
+    with open(file_html, 'w') as file:
+        file.write(content_html)
+    # args.infile.close()
