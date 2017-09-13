@@ -18,11 +18,37 @@
 </ul>
 </div>
 <h2 id="simple-tests">Simple tests</h2>
-<p>This is what a document filled with awesome will look like.</p>
+<p>Rich text formatting is useful! This is what a document filled with awesome will look like.</p>
 <p>I <em>said</em>.... I <strong>said</strong>...</p>
 <blockquote>
 <p>and I quote...</p>
 </blockquote>
+<ul>
+<li>First</li>
+<li>Second</li>
+<li>Third<ul>
+<li>Third First</li>
+<li>Third Second<ul>
+<li>Third Second First</li>
+<li>Third Second Second</li>
+</ul>
+</li>
+<li>Third Third</li>
+</ul>
+</li>
+<li>
+<p>Fourth</p>
+<ul>
+<li>Fourth First</li>
+</ul>
+</li>
+<li>
+<p>One</p>
+</li>
+<li>Two</li>
+<li>Three</li>
+<li>Four</li>
+</ul>
 <h3 id="this-wont-work">This won't work</h3>
 <p>~~no wait don't do that~~</p>
 <h3 id="table">Table</h3>
@@ -53,13 +79,15 @@
 = 20</p>
 <h2 id="code">Code</h2>
 <p>Code block</p>
-<pre><code class="python">#!/usr/bin/python3
-print('stuff')
-[a for a in range(0,10)]
+<pre><code>#!/usr/bin/python3
+b = [a for a in range(0,10)]
+if b.len() &gt; 1:
+    print('b: {}'.format(b))
 </code></pre>
 
 <p>Python code block</p>
 <pre><code class="python">#!/usr/bin/python3
-print('stuff')
-[a for a in range(0,10)]
+b = [a for a in range(0,10)]
+if b.len() &gt; 1:
+    print('b: {}'.format(b))
 </code></pre>

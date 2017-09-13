@@ -9,11 +9,27 @@ Markdown Formatting Tester
 
 ## Simple tests
 
-This is what a document filled with awesome will look like.
+Rich text formatting is useful! This is what a document filled with awesome will look like.
 
 I _said_.... I **said**...
 
 > and I quote...
+
+- First
+- Second
+- Third
+    + Third First
+    + Third Second
+        * Third Second First
+        * Third Second Second
+    + Third Third
+- Fourth
+    + Fourth First
+
+1. One
+2. Two
+3. Three
+4. Four
 
 ### This won't work
 
@@ -36,16 +52,18 @@ I _said_.... I **said**...
 
 Code block
 
-```python
+```
 #!/usr/bin/python3
-print('stuff')
-[a for a in range(0,10)]
+b = [a for a in range(0,10)]
+if b.len() > 1:
+    print('b: {}'.format(b))
 ```
 
 Python code block
 
 ```python
 #!/usr/bin/python3
-print('stuff')
-[a for a in range(0,10)]
+b = [a for a in range(0,10)]
+if b.len() > 1:
+    print('b: {}'.format(b))
 ```
